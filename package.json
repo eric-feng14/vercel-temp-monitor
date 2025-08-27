@@ -1,0 +1,27 @@
+{
+  "name": "temp-monitor",
+  "version": "1.0.0",
+  "description": "Web-based temperature monitoring system using MAX6675 thermocouple sensor",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "temperature",
+    "monitoring",
+    "raspberry-pi",
+    "max6675",
+    "thermocouple",
+    "web",
+    "realtime"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.8.1",
+    "spi-device": "^3.1.2"
+  }
+}

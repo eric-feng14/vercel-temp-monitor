@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Monitor</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌡️ Temperature Monitor</h1>
+            <div class="status" id="status">Connecting...</div>
+        </header>
+
+        <main>
+            <div class="current-temp-section">
+                <div class="temp-card">
+                    <div class="temp-display">
+                        <span class="temp-value" id="currentTemp">--</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <div class="temp-info">
+                        <div class="last-updated" id="lastUpdated">Last updated: --</div>
+                        <div class="temp-fahrenheit" id="tempFahrenheit">-- °F</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <div class="chart-header">
+                    <h2>Temperature History</h2>
+                    <div class="chart-controls">
+                        <button id="clearHistory" class="btn btn-secondary">Clear History</button>
+                        <select id="timeRange" class="select">
+                            <option value="all">All Data</option>
+                            <option value="50">Last 50 readings</option>
+                            <option value="25">Last 25 readings</option>
+                            <option value="10">Last 10 readings</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="tempChart"></canvas>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-label">Min Temperature</div>
+                    <div class="stat-value" id="minTemp">--</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Max Temperature</div>
+                    <div class="stat-value" id="maxTemp">--</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Average</div>
+                    <div class="stat-value" id="avgTemp">--</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Readings</div>
+                    <div class="stat-value" id="totalReadings">0</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
