@@ -10,6 +10,7 @@ const io = new Server(server);
 
 const PORT = process.env.PORT || 3000;
 const REMOTE_WEBSITE = "https://vercel-temp-monitor.vercel.app/";
+const PROTECTION_BYPASS = "77018006689506822687150898029451";
 //const REMOTE_VERCEL_WEBSITE = "https://vercel-temp-monitor.vercel.app/";
 
 // Store temperature data
@@ -73,8 +74,8 @@ function initializeSPI() {
 
 function sendRemoteWeb(temp,ts) {
   console.log("send " + temp); 
-  //todo = 'curl -X POST  -H "Content-Type: application/json" -d '{"temperature":' +  temp +', "timestamp":' +'"' +  444444444444 + '"}  ''  + REMOTE_WEBSITE + '/api/settemperature';
-  todo = `curl -X POST -H "Content-Type: application/json" -d '{"temperature": ${temp}, "timestamp":" ${ts} "}' ${REMOTE_WEBSITE}/api/settemperature`;
+  //todo = 'curl -X POST  -H "Content-Type: application/json" -d '{"temperature":' +  temp +', "tiVERCEL_AUTOMATION_BYPASS_SECRET:mestamp":' +'"' +  444444444444 + '"}  ''  + REMOTE_WEBSITE + '/api/settemperature';
+  todo = `curl -X POST -H "Content-Type: application/json" -H "VERCEL_AUTOMATION_BYPASS_SECRET:${PROTECTION_BYPASS}" -d '{"temperature": ${temp}, "timestamp":" ${ts} "}' ${REMOTE_WEBSITE}/api/settemperature`;
   console.log(todo);  
 exec(todo, function (error, stdOut, stdErr) {
     // do what you want!
