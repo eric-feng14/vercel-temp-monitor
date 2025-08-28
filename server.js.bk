@@ -3,15 +3,12 @@ const http = require('http');
 const { Server } = require('socket.io');
 const spi = require('spi-device');
 const path = require('path');
-const exec = require('child_process').exec;
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
 const PORT = process.env.PORT || 3000;
-const REMOTE_WEBSITE = "http://192.168.2.34:3000";
-const REMOTE_VERCEL_WEBSITE = "http://192.168.2.34:3000";
-const VERCEL_SECRET = " -H VERCEL_AUTOMATION_BYPASS_SECRET:testpitestpitestpitestpitestpi11";
 
 // Store temperature data
 let currentTemp = null;
@@ -72,16 +69,6 @@ function initializeSPI() {
   });
 }
 
-function sendRemoteWeb(temp,ts) {
-  console.log("send " + temp); 
-  //todo = 'curl -X POST  -H "Content-Type: application/json" -d '{"temperature":' +  temp +', "timestamp":' +'"' +  444444444444 + '"}  ''  + REMOTE_WEBSITE + '/api/settemperature';
-  todo = `curl -X POST -H "Content-Type: application/json" -d '{"temperature": ${temp}, "timestamp":" ${ts} "}' ${REMOTE_WEBSITE}/api/settemperature`;
-  console.log(todo);  
-exec(todo, function (error, stdOut, stdErr) {
-    // do what you want!
-}); 
-
-}
 function readTemp() {
   if (!dev) return;
   
@@ -130,7 +117,6 @@ function readTemp() {
     
     // Emit to all connected clients
     io.emit('temperature', tempData);
-    sendRemoteWeb(tempC,timestamp);
   });
 }
 
