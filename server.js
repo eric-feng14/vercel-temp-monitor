@@ -9,9 +9,8 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 const PORT = process.env.PORT || 3000;
-const REMOTE_WEBSITE = "http://192.168.2.34:3000";
-const REMOTE_VERCEL_WEBSITE = "http://192.168.2.34:3000";
-const VERCEL_SECRET = " -H VERCEL_AUTOMATION_BYPASS_SECRET:testpitestpitestpitestpitestpi11";
+const REMOTE_WEBSITE = "https://vercel-temp-monitor.vercel.app/";
+//const REMOTE_VERCEL_WEBSITE = "https://vercel-temp-monitor.vercel.app/";
 
 // Store temperature data
 let currentTemp = null;
