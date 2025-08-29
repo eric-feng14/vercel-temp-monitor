@@ -1,7 +1,7 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-const spi = require('spi-device');
+//const spi = require('spi-device');
 const path = require('path');
 const exec = require('child_process').exec;
 const app = express();
@@ -157,7 +157,7 @@ process.on('SIGTERM', shutdown);
 async function startApp() {
   try {
     // Initialize SPI
-    await initializeSPI();
+    //await initializeSPI();
     
     // Start temperature monitoring
     tempInterval = setInterval(readTemp, 1000);
